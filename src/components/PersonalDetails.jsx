@@ -13,10 +13,10 @@ const PersonalDetails = ({ info }) => {
   }
 
   return (
-    <div className="bg-white p-4 rounded-xl shadow-sm">
-      <div className="flex gap-4 items-baseline">
+    <div className="card">
+      <div className="flex gap-4 items-center mb-4">
         <PiUserBold className="text-xl text-black" />
-        <h2 className="text-2xl font-semibold mb-4">Personal Details</h2>
+        <h2 className="text-2xl font-semibold">Personal Details</h2>
       </div>
 
       {/* Name */}
@@ -109,14 +109,14 @@ const PersonalDetails = ({ info }) => {
         {isEditable ? (
           <button
             onClick={save}
-            className="btn-primary bg-green-600 hover:bg-green-500"
+            className="btn-primary bg-green-500 hover:bg-green-400"
           >
             Save
           </button>
         ) : (
           <button
             onClick={edit}
-            className="btn-primary bg-blue-600 hover:bg-blue-500"
+            className="btn-primary bg-blue-500 hover:bg-blue-400"
           >
             Edit
           </button>

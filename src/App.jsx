@@ -22,8 +22,8 @@ const App = () => {
   return (
     <div className="min-h-screen grid grid-cols-6 container mx-auto auto-rows-min">
       <Header />
-      <UserInformation info={bio} />
-      <Preview info={bio} />
+      <UserInformation info={bio} setInfo={setBio} />
+      <Preview info={bio} setInfo={setBio} />
     </div>
   );
 };
