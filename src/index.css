@@ -7,6 +7,7 @@
 @layer components {
   html {
     font-family: 'Kanit';
+    background-color: #f1f5f9;
   }
 
   .label {
@@ -23,5 +24,9 @@
 
   .btn-primary {
     @apply rounded-full px-6 py-2 text-white font-semibold;
+  }
+
+  .preview-header {
+    @apply text-lg text-black font-normal text-center border-b-[1px] border-black mb-2;
   }
 }

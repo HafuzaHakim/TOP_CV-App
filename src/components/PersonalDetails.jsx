@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { PiUserBold } from 'react-icons/pi';
 
 const PersonalDetails = ({ info }) => {
   const [isEditable, setIsEditable] = useState(true);
@@ -12,8 +13,12 @@ const PersonalDetails = ({ info }) => {
   }
 
   return (
-    <div className="bg-white p-4 rounded-xl">
-      <h2 className="text-2xl font-semibold mb-4">Personal Details</h2>
+    <div className="bg-white p-4 rounded-xl shadow-sm">
+      <div className="flex gap-4 items-baseline">
+        <PiUserBold className="text-xl text-black" />
+        <h2 className="text-2xl font-semibold mb-4">Personal Details</h2>
+      </div>
+
       {/* Name */}
       <div className="flex flex-col mb-2">
         <label htmlFor="fullName" className="label">
@@ -101,18 +106,21 @@ const PersonalDetails = ({ info }) => {
       </div>
 
       <div className="flex gap-4 justify-end mt-8">
-        <button
-          onClick={edit}
-          className="btn-primary bg-blue-600 hover:bg-blue-500"
-        >
-          Edit
-        </button>
-        <button
-          onClick={save}
-          className="btn-primary bg-green-600 hover:bg-green-500"
-        >
-          Save
-        </button>
+        {isEditable ? (
+          <button
+            onClick={save}
+            className="btn-primary bg-green-600 hover:bg-green-500"
+          >
+            Save
+          </button>
+        ) : (
+          <button
+            onClick={edit}
+            className="btn-primary bg-blue-600 hover:bg-blue-500"
+          >
+            Edit
+          </button>
+        )}
       </div>
     </div>
   );
