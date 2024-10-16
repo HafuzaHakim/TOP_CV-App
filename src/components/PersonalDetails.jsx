@@ -22,7 +22,7 @@ const PersonalDetails = ({ info }) => {
       {/* Name */}
       <div className="flex flex-col mb-2">
         <label htmlFor="fullName" className="label">
-          Full Name
+          Full name
         </label>
         {isEditable ? (
           <input
@@ -56,7 +56,7 @@ const PersonalDetails = ({ info }) => {
       {/* Phone */}
       <div className="flex flex-col mb-2">
         <label htmlFor="phone" className="label">
-          Phone Number
+          Phone number
         </label>
         {isEditable ? (
           <input

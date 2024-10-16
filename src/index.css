@@ -10,8 +10,20 @@
     background-color: #f1f5f9;
   }
 
+  aside::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  aside::-webkit-scrollbar-track {
+    background: #fb923c;
+  }
+
+  aside::-webkit-scrollbar-thumb {
+    background-color: rgb(143, 143, 161);
+  }
+
   .card {
-    @apply bg-white p-4 rounded-xl shadow-sm;
+    @apply bg-white p-4 rounded-xl shadow-md;
   }
 
   .label {

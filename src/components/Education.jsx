@@ -1,17 +1,16 @@
 import { useState } from 'react';
-import { PiBriefcaseBold } from 'react-icons/pi';
-import { PiPlusCircleBold } from 'react-icons/pi';
 import DatePicker from './DatePicker';
+import { PiGraduationCapBold, PiPlusCircleBold } from 'react-icons/pi';
 
-const Experience = ({ info, setInfo }) => {
+const Education = ({ info, setInfo }) => {
   const [showForm, setShowForm] = useState(true);
   const [date, setDate] = useState({ start: '', end: '' });
 
   return (
     <div className="card">
       <div className="flex gap-4 mb-4 items-center">
-        <PiBriefcaseBold className="text-xl text-black" />
-        <h2 className="text-2xl font-semibold">Experience</h2>
+        <PiGraduationCapBold className="text-xl text-black" />
+        <h2 className="text-2xl font-semibold">Education</h2>
         <button
           className="bg-green-500 px-2 py-1 rounded-lg hover:bg-green-400 ml-auto"
           onClick={() => setShowForm(true)}
@@ -20,53 +19,42 @@ const Experience = ({ info, setInfo }) => {
         </button>
       </div>
       {showForm && (
-        <form action="#">
+        <form>
           <div className="flex flex-col mb-2">
-            <label htmlFor="company-name" className="label">
-              Company Name
+            <label htmlFor="school-name" className="label">
+              School/College/University
             </label>
             <input
-              id="company-name"
+              id="school-name"
               type="text"
               className="input"
-              placeholder="Nexon Technology"
+              placeholder="Far Far Away Imperial College"
             />
           </div>
           <div className="flex flex-col mb-2">
-            <label htmlFor="company-title" className="label">
-              Title
+            <label htmlFor="field-of-study" className="label">
+              Field of study
             </label>
             <input
-              id="company-title"
+              id="field-of-study"
               type="text"
               className="input"
-              placeholder="Senior Manager"
+              placeholder="Bachelor of Swamp Raiding"
             />
           </div>
           <div className="flex flex-col mb-2">
-            <label htmlFor="company-location" className="label">
+            <label htmlFor="school-location" className="label">
               Location
             </label>
             <input
-              id="company-location"
+              id="school-location"
               type="text"
               className="input"
-              placeholder="Pacifica,CA"
+              placeholder="Farquad,SH"
             />
           </div>
           <DatePicker date={date} setDate={setDate} />
-          <div className="flex flex-col">
-            <label htmlFor="exp-desc" className="label">
-              Responsibilities
-            </label>
-            <textarea
-              name="experience-description"
-              id="exp-desc"
-              className="input h-40"
-              placeholder="Oversee complex inter-department communication ensuring alignment of interest"
-            ></textarea>
-          </div>
-          <div className="mt-8 flex justify-end">
+          <div className="mt-4 flex justify-end">
             <button
               type="submit"
               className="btn-primary bg-green-500 hover:bg-green-400"
@@ -78,11 +66,11 @@ const Experience = ({ info, setInfo }) => {
       )}
       {!showForm && (
         <p className="text-base font-extralight text-slate-400">
-          No work experience added....yet
+          No education information added
         </p>
       )}
     </div>
   );
 };
 
-export default Experience;
+export default Education;

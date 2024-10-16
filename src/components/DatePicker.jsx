@@ -40,7 +40,7 @@ const DatePicker = ({ date, setDate }) => {
           onChange={handleChange}
         />
         <label htmlFor="checkPresent" className="text-base font-light">
-          Present working company
+          My current organization
         </label>
       </div>
     </div>
