@@ -39,13 +39,47 @@ const Preview = ({ info }) => {
         </div>
         <div className="mb-6">
           <h5 className="preview-header">Skills</h5>
-          {info.skills.length === 0 ? <p>List of skills that will help you secure your dream job</p> : <ul className="grid"></ul>}
+          {info.skills.length === 0 ? (
+            <p>List of skills that will help you secure your dream job</p>
+          ) : (
+            <ul className="grid grid-cols-5 list-disc list-inside text-black text-base font-extralight">
+              {info.skills.map((skill) => (
+                <li key={skill}>{skill}</li>
+              ))}
+            </ul>
+          )}
         </div>
         <div className="mb-6">
           <h5 className="preview-header">Experience</h5>
+          {info.experience.length === 0 ? (
+            <p>Start adding your previous work experience</p>
+          ) : (
+            <div>
+              {info.experience.map((work) => {
+                return (
+                  <div key={work.name} className="">
+                    <div>
+                      <h6>Company Name</h6>
+                      <p>Location</p>
+                    </div>
+                    <div>
+                      <h6>Title</h6>
+                      <p>Period</p>
+                    </div>
+                    <p>Achievement</p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
         <div className="">
           <h5 className="preview-header">Education</h5>
+          {info.education.length === 0 ? (
+            <p>Start adding your past education details</p>
+          ) : (
+            <div>{info.education.map((school) => {})}</div>
+          )}
         </div>
       </div>
     </main>
