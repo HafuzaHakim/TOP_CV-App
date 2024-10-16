@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { PiToolboxBold } from 'react-icons/pi';
-import { PiPlusCircleBold } from 'react-icons/pi';
-import { PiX } from 'react-icons/pi';
+import { PiToolboxBold, PiPlusCircleBold, PiX } from 'react-icons/pi';
 
 const Skills = ({ info, setInfo }) => {
   const [newSkill, setNewSkill] = useState('');

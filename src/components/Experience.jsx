@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { PiBriefcaseBold } from 'react-icons/pi';
-import { PiPlusCircleBold } from 'react-icons/pi';
+import { PiBriefcaseBold, PiPlusCircleBold } from 'react-icons/pi';
 import DatePicker from './DatePicker';
 
 const Experience = ({ info, setInfo }) => {
@@ -13,7 +12,7 @@ const Experience = ({ info, setInfo }) => {
         <PiBriefcaseBold className="text-xl text-black" />
         <h2 className="text-2xl font-semibold">Experience</h2>
         <button
-          className="bg-green-500 px-2 py-1 rounded-lg hover:bg-green-400 ml-auto"
+          className="bg-green-500 px-2 py-1 rounded-lg hover:bg-green-400 ml-auto drop-shadow-md"
           onClick={() => setShowForm(true)}
         >
           <PiPlusCircleBold className="text-xl text-white" />

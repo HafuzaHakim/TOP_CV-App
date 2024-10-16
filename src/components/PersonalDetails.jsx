@@ -1,15 +1,30 @@
 import { useState } from 'react';
 import { PiUserBold } from 'react-icons/pi';
 
-const PersonalDetails = ({ info }) => {
+const PersonalDetails = ({ info, setInfo }) => {
   const [isEditable, setIsEditable] = useState(true);
+  const [personalDetail, setPersonalDetail] = useState({
+    fullname: '',
+    email: '',
+    phone: '',
+    city: '',
+    role: '',
+  });
 
   function edit() {
     setIsEditable(true);
   }
 
   function save() {
+    setInfo({
+      ...info,
+      personalInfo: { ...personalDetail },
+    });
     setIsEditable(false);
+  }
+
+  function handleChange(e) {
+    setPersonalDetail({ ...personalDetail, [e.target.name]: e.target.value });
   }
 
   return (
@@ -31,9 +46,11 @@ const PersonalDetails = ({ info }) => {
             id="fullName"
             placeholder="John Doe"
             className="input"
+            value={personalDetail.fullName}
+            onChange={handleChange}
           />
         ) : (
-          <p className="data">Text test</p>
+          <p className="data">{info.personalInfo.fullName}</p>
         )}
       </div>
       {/* Email */}
@@ -48,9 +65,11 @@ const PersonalDetails = ({ info }) => {
             id="email"
             placeholder="yourname@mail.com"
             className="input"
+            value={personalDetail.email}
+            onChange={handleChange}
           />
         ) : (
-          <p className="data"></p>
+          <p className="data">{info.personalInfo.email}</p>
         )}
       </div>
       {/* Phone */}
@@ -65,9 +84,11 @@ const PersonalDetails = ({ info }) => {
             id="phone"
             placeholder="+60123456789"
             className="input"
+            value={personalDetail.phone}
+            onChange={handleChange}
           />
         ) : (
-          <p className="data"></p>
+          <p className="data">{info.personalInfo.phone}</p>
         )}
       </div>
       {/* City */}
@@ -82,9 +103,11 @@ const PersonalDetails = ({ info }) => {
             id="city"
             placeholder="New York"
             className="input"
+            value={personalDetail.city}
+            onChange={handleChange}
           />
         ) : (
-          <p className="data"></p>
+          <p className="data">{info.personalInfo.city}</p>
         )}
       </div>
       {/* Role */}
@@ -99,9 +122,11 @@ const PersonalDetails = ({ info }) => {
             id="role"
             placeholder="Doctor"
             className="input"
+            value={personalDetail.role}
+            onChange={handleChange}
           />
         ) : (
-          <p className="data"></p>
+          <p className="data">{info.personalInfo.role}</p>
         )}
       </div>
 

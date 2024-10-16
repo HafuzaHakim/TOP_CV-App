@@ -35,7 +35,7 @@
   }
 
   .data {
-    @apply bg-slate-100 p-2 rounded-xl outline-none border-2 border-transparent;
+    @apply bg-slate-100 p-2 rounded-xl outline-none border-2 border-transparent font-light;
   }
 
   .btn-primary {

@@ -12,7 +12,7 @@ const Education = ({ info, setInfo }) => {
         <PiGraduationCapBold className="text-xl text-black" />
         <h2 className="text-2xl font-semibold">Education</h2>
         <button
-          className="bg-green-500 px-2 py-1 rounded-lg hover:bg-green-400 ml-auto"
+          className="bg-green-500 px-2 py-1 rounded-lg hover:bg-green-400 ml-auto drop-shadow-md"
           onClick={() => setShowForm(true)}
         >
           <PiPlusCircleBold className="text-xl text-white" />
