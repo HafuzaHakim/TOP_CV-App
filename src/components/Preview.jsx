@@ -1,4 +1,35 @@
 const Preview = ({ info, setInfo }) => {
+  function getMonth(month) {
+    switch (month) {
+      case '01':
+        return 'January';
+      case '02':
+        return 'February';
+      case '03':
+        return 'March';
+      case '04':
+        return 'April';
+      case '05':
+        return 'May';
+      case '06':
+        return 'June';
+      case '07':
+        return 'July';
+      case '08':
+        return 'August';
+      case '09':
+        return 'September';
+      case '10':
+        return 'October';
+      case '11':
+        return 'November';
+      case '12':
+        return 'December';
+      default:
+        return 'Invalid month'; // Handles invalid input
+    }
+  }
+
   return (
     <main className="col-span-4 p-5">
       <div className="bg-white p-12 h-full flex flex-col shadow-sm rounded-sm text-black/40 font-light text-sm">
@@ -46,9 +77,11 @@ const Preview = ({ info, setInfo }) => {
           {info.skills.length === 0 ? (
             <p>List of skills that will help you secure your dream job</p>
           ) : (
-            <ul className="grid grid-cols-5 list-disc list-inside text-black text-base font-extralight">
+            <ul className="flex flex-wrap list-disc list-inside text-black text-base font-extralight mx-auto w-[90%]">
               {info.skills.map((skill) => (
-                <li key={skill}>{skill}</li>
+                <li key={skill} className="basis-1/4">
+                  {skill}
+                </li>
               ))}
             </ul>
           )}
@@ -61,16 +94,18 @@ const Preview = ({ info, setInfo }) => {
             <div>
               {info.experience.map((work) => {
                 return (
-                  <div key={work.name} className="">
+                  <div className="" key={work.companyName}>
                     <div>
-                      <h6>Company Name</h6>
-                      <p>Location</p>
+                      <h6>{work.companyName}</h6>
+                      <p>{work.companyCity}</p>
                     </div>
                     <div>
-                      <h6>Title</h6>
-                      <p>Period</p>
+                      <h6>{work.companyTitle}</h6>
+                      <p>
+                        {work.companyDate.start} - {work.companyDate.end}
+                      </p>
                     </div>
-                    <p>Achievement</p>
+                    <p>{work.companyResponsibility}</p>
                   </div>
                 );
               })}

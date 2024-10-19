@@ -4,7 +4,7 @@ import { PiUserBold } from 'react-icons/pi';
 const PersonalDetails = ({ info, setInfo }) => {
   const [isEditable, setIsEditable] = useState(true);
   const [personalDetail, setPersonalDetail] = useState({
-    fullname: '',
+    fullName: '',
     email: '',
     phone: '',
     city: '',

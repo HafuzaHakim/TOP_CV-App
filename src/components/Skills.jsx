@@ -4,7 +4,8 @@ import { PiToolboxBold, PiPlusCircleBold, PiX } from 'react-icons/pi';
 const Skills = ({ info, setInfo }) => {
   const [newSkill, setNewSkill] = useState('');
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     setInfo({ ...info, skills: [...info.skills, newSkill] });
     setNewSkill('');
   }

@@ -4,7 +4,37 @@ import DatePicker from './DatePicker';
 
 const Experience = ({ info, setInfo }) => {
   const [showForm, setShowForm] = useState(true);
-  const [date, setDate] = useState({ start: '', end: '' });
+  const [experience, setExperience] = useState({
+    companyName: '',
+    companyTitle: '',
+    companyCity: '',
+    companyStartDate: '',
+    companyEndDate: '',
+    companyResponsibility: '',
+    isPresent: false,
+  });
+
+  function save(e) {
+    e.preventDefault();
+    setInfo({
+      ...info,
+      experience: [...info.experience, { ...experience }],
+    });
+    setExperience({
+      companyName: '',
+      companyTitle: '',
+      companyCity: '',
+      companyStartDate: '',
+      companyEndDate: '',
+      companyResponsibility: '',
+      isPresent: false,
+    });
+    setShowForm(false);
+  }
+
+  function handleChange(e) {
+    setExperience({ ...experience, [e.target.name]: e.target.value });
+  }
 
   return (
     <div className="card">
@@ -19,16 +49,19 @@ const Experience = ({ info, setInfo }) => {
         </button>
       </div>
       {showForm && (
-        <form action="#">
+        <form action="#" onSubmit={save}>
           <div className="flex flex-col mb-2">
             <label htmlFor="company-name" className="label">
               Company Name
             </label>
             <input
               id="company-name"
+              name="companyName"
               type="text"
               className="input"
               placeholder="Nexon Technology"
+              value={experience.companyName}
+              onChange={handleChange}
             />
           </div>
           <div className="flex flex-col mb-2">
@@ -37,9 +70,12 @@ const Experience = ({ info, setInfo }) => {
             </label>
             <input
               id="company-title"
+              name="companyTitle"
               type="text"
               className="input"
               placeholder="Senior Manager"
+              value={experience.companyTitle}
+              onChange={handleChange}
             />
           </div>
           <div className="flex flex-col mb-2">
@@ -48,21 +84,28 @@ const Experience = ({ info, setInfo }) => {
             </label>
             <input
               id="company-location"
+              name="companyCity"
               type="text"
               className="input"
               placeholder="Pacifica,CA"
+              value={experience.companyCity}
+              onChange={handleChange}
             />
           </div>
-          <DatePicker date={date} setDate={setDate} />
+
+          <DatePicker date={experience} setDate={setExperience} />
+
           <div className="flex flex-col">
             <label htmlFor="exp-desc" className="label">
               Responsibilities
             </label>
             <textarea
-              name="experience-description"
+              name="companyResponsibility"
               id="exp-desc"
               className="input h-40"
               placeholder="Oversee complex inter-department communication ensuring alignment of interest"
+              value={experience.companyResponsibility}
+              onChange={handleChange}
             ></textarea>
           </div>
           <div className="mt-8 flex justify-end">
@@ -70,7 +113,7 @@ const Experience = ({ info, setInfo }) => {
               type="submit"
               className="btn-primary bg-green-500 hover:bg-green-400"
             >
-              Save
+              Add
             </button>
           </div>
         </form>

@@ -43,6 +43,6 @@
   }
 
   .preview-header {
-    @apply text-lg text-black font-normal text-center border-b-[1px] border-black mb-2;
+    @apply text-lg text-black font-normal text-center border-double border-b-[3px] border-black mb-2;
   }
 }
