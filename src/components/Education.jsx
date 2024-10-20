@@ -4,7 +4,35 @@ import { PiGraduationCapBold, PiPlusCircleBold } from 'react-icons/pi';
 
 const Education = ({ info, setInfo }) => {
   const [showForm, setShowForm] = useState(true);
-  const [date, setDate] = useState({ start: '', end: '' });
+  const [education, setEducation] = useState({
+    educationName: '',
+    educationTitle: '',
+    educationCity: '',
+    educationStartDate: '',
+    educationEndDate: '',
+    isPresent: false,
+  });
+
+  function save(e) {
+    e.preventDefault();
+    setInfo({
+      ...info,
+      education: [...info.education, { ...education }],
+    });
+    setEducation({
+      educationName: '',
+      educationField: '',
+      educationCity: '',
+      educationStartDate: '',
+      educationEndDate: '',
+      isPresent: false,
+    });
+    setShowForm(false);
+  }
+
+  function handleChange(e) {
+    setEducation({ ...education, [e.target.name]: e.target.value });
+  }
 
   return (
     <div className="card">
@@ -29,6 +57,9 @@ const Education = ({ info, setInfo }) => {
               type="text"
               className="input"
               placeholder="Far Far Away Imperial College"
+              name="educationName"
+              value={education.educationName}
+              onChange={handleChange}
             />
           </div>
           <div className="flex flex-col mb-2">
@@ -40,6 +71,9 @@ const Education = ({ info, setInfo }) => {
               type="text"
               className="input"
               placeholder="Bachelor of Swamp Raiding"
+              name="educationField"
+              value={education.educationField}
+              onChange={handleChange}
             />
           </div>
           <div className="flex flex-col mb-2">
@@ -51,9 +85,12 @@ const Education = ({ info, setInfo }) => {
               type="text"
               className="input"
               placeholder="Farquad,SH"
+              name="educationCity"
+              value={education.educationCity}
+              onChange={handleChange}
             />
           </div>
-          <DatePicker date={date} setDate={setDate} />
+          <DatePicker date={education} setDate={setEducation} />
           <div className="mt-4 flex justify-end">
             <button
               type="submit"

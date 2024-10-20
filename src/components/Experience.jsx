@@ -36,6 +36,14 @@ const Experience = ({ info, setInfo }) => {
     setExperience({ ...experience, [e.target.name]: e.target.value });
   }
 
+  function handleCheck() {
+    setExperience({
+      ...experience,
+      companyEndDate: '',
+      isPresent: !experience.isPresent,
+    });
+  }
+
   return (
     <div className="card">
       <div className="flex gap-4 mb-4 items-center">
@@ -93,7 +101,17 @@ const Experience = ({ info, setInfo }) => {
             />
           </div>
 
-          <DatePicker date={experience} setDate={setExperience} />
+          <DatePicker
+            date={experience}
+            startDate={experience.companyStartDate}
+            endDate={experience.companyEndDate}
+            isPresent={experience.isPresent}
+            setDate={setExperience}
+            changeDate={handleChange}
+            start="companyStartDate"
+            end="companyEndDate"
+            handleCheck={handleCheck}
+          />
 
           <div className="flex flex-col">
             <label htmlFor="exp-desc" className="label">

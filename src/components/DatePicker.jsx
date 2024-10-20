@@ -1,29 +1,12 @@
-import { useState } from 'react';
-
-const DatePicker = ({ date, setDate }) => {
-  const [isPresent, setIsPresent] = useState(false);
-
-  function getStartDate(e) {
-    setDate({
-      ...date,
-      companyStartDate: e.target.value,
-    });
-  }
-
-  function getEndDate(e) {
-    setDate({
-      ...date,
-      companyEndDate: e.target.value,
-    });
-  }
-
-  function handleCheck() {
-    setDate({
-      ...date,
-      isPresent: !date.isPresent,
-    });
-  }
-
+const DatePicker = ({
+  startDate,
+  endDate,
+  isPresent,
+  changeDate,
+  start,
+  end,
+  handleCheck,
+}) => {
   return (
     <div className="mb-2">
       <div className="flex gap-4 mb-4">
@@ -35,9 +18,9 @@ const DatePicker = ({ date, setDate }) => {
             id="startDate"
             type="month"
             className="input cursor-pointer hover:bg-slate-200"
-            name="start"
-            value={date.companyStartDate}
-            onChange={getStartDate}
+            name={start}
+            value={startDate}
+            onChange={changeDate}
           />
         </div>
         <div className="flex flex-col flex-1">
@@ -47,11 +30,11 @@ const DatePicker = ({ date, setDate }) => {
           <input
             id="endDate"
             type="month"
-            disabled={date.isPresent}
+            disabled={isPresent}
             className="input cursor-pointer disabled:border-slate-500/40 hover:bg-slate-200 disabled:cursor-default hover:disabled:bg-slate-100"
-            name="end"
-            value={date.companyEndDate}
-            onChange={getEndDate}
+            name={end}
+            value={endDate}
+            onChange={changeDate}
           />
         </div>
       </div>
