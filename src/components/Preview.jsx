@@ -1,4 +1,4 @@
-const Preview = ({ info, setInfo }) => {
+const Preview = ({ info }) => {
   function getMonth(month) {
     switch (month) {
       case '01':
@@ -88,36 +88,90 @@ const Preview = ({ info, setInfo }) => {
         </div>
         <div className="mb-6">
           <h5 className="preview-header">Experience</h5>
-          {info.experience.length === 0 ? (
-            <p>Start adding your previous work experience</p>
-          ) : (
-            <div>
-              {info.experience.map((work) => {
-                return (
-                  <div className="" key={work.companyName}>
-                    <div>
-                      <h6>{work.companyName}</h6>
-                      <p>{work.companyCity}</p>
-                    </div>
-                    <div>
-                      <h6>{work.companyTitle}</h6>
-                      <p>
-                        {work.companyDate.start} - {work.companyDate.end}
+          <div>
+            {info.experience.length === 0 ? (
+              <div>
+                <div className="flex justify-between text-base mb-1">
+                  <h6 className="font-normal">Company Name</h6>
+                  <p className="font-extralight">City</p>
+                </div>
+                <div className="flex justify-between font-extralight mb-1 italic">
+                  <h6>Work Title</h6>
+
+                  <p>Time period</p>
+                </div>
+                <p className="font-extralight">Job responsibilities</p>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4">
+                {info.experience.map((work) => {
+                  const [startYear, startMonth] =
+                    work.companyStartDate.split('-');
+
+                  const [endYear, endMonth] = work.companyEndDate.split('-');
+
+                  return (
+                    <div className="text-black/85" key={work.companyName}>
+                      <div className="flex justify-between text-base mb-1">
+                        <h6 className="font-normal">{work.companyName}</h6>
+                        <p className="font-extralight">{work.companyCity}</p>
+                      </div>
+                      <div className="flex justify-between font-extralight mb-1 italic">
+                        <h6>{work.companyTitle}</h6>
+
+                        <p>{`${getMonth(startMonth)} ${startYear} - ${
+                          work.isPresent ? 'Present' : getMonth(endMonth)
+                        } ${!work.isPresent ? '' : endYear}`}</p>
+                      </div>
+                      <p className="font-extralight">
+                        {work.companyResponsibility}
                       </p>
                     </div>
-                    <p>{work.companyResponsibility}</p>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </div>
+        <div>
+          <h5 className="preview-header">Education</h5>
+          {info.education.length === 0 ? (
+            <div>
+              <div className="flex justify-between text-base mb-1">
+                <h6 className="font-normal">School/University/College Name</h6>
+                <p className="font-extralight">City</p>
+              </div>
+              <div className="flex justify-between font-extralight mb-1 italic">
+                <h6>Field of study</h6>
+
+                <p>Time period</p>
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              {info.education.map((school) => {
+                const [startYear, startMonth] =
+                  school.educationStartDate.split('-');
+
+                const [endYear, endMonth] = school.educationEndDate.split('-');
+
+                return (
+                  <div className="text-black/85" key={school.educationName}>
+                    <div className="flex justify-between text-base mb-1">
+                      <h6 className="font-normal">{school.educationName}</h6>
+                      <p className="font-extralight">{school.educationCity}</p>
+                    </div>
+                    <div className="flex justify-between font-extralight mb-1 italic">
+                      <h6>{school.educationField}</h6>
+
+                      <p>{`${getMonth(startMonth)} ${startYear} - ${
+                        school.isPresent ? 'Present' : getMonth(endMonth)
+                      } ${!school.isPresent ? '' : endYear}`}</p>
+                    </div>
                   </div>
                 );
               })}
             </div>
-          )}
-        </div>
-        <div className="">
-          <h5 className="preview-header">Education</h5>
-          {info.education.length === 0 ? (
-            <p>Start adding your past education details</p>
-          ) : (
-            <div>{info.education.map((school) => {})}</div>
           )}
         </div>
       </div>

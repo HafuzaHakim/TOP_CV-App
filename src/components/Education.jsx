@@ -3,10 +3,10 @@ import DatePicker from './DatePicker';
 import { PiGraduationCapBold, PiPlusCircleBold } from 'react-icons/pi';
 
 const Education = ({ info, setInfo }) => {
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   const [education, setEducation] = useState({
     educationName: '',
-    educationTitle: '',
+    educationField: '',
     educationCity: '',
     educationStartDate: '',
     educationEndDate: '',
@@ -34,6 +34,14 @@ const Education = ({ info, setInfo }) => {
     setEducation({ ...education, [e.target.name]: e.target.value });
   }
 
+  function handleCheck() {
+    setEducation({
+      ...education,
+      educationEndDate: '',
+      isPresent: !education.isPresent,
+    });
+  }
+
   return (
     <div className="card">
       <div className="flex gap-4 mb-4 items-center">
@@ -47,7 +55,7 @@ const Education = ({ info, setInfo }) => {
         </button>
       </div>
       {showForm && (
-        <form>
+        <form action="#" onSubmit={save}>
           <div className="flex flex-col mb-2">
             <label htmlFor="school-name" className="label">
               School/College/University
@@ -90,7 +98,15 @@ const Education = ({ info, setInfo }) => {
               onChange={handleChange}
             />
           </div>
-          <DatePicker date={education} setDate={setEducation} />
+          <DatePicker
+            startDate={education.educationStartDate}
+            endDate={education.educationEndDate}
+            isPresent={education.isPresent}
+            changeDate={handleChange}
+            start="educationStartDate"
+            end="educationEndDate"
+            handleCheck={handleCheck}
+          />
           <div className="mt-4 flex justify-end">
             <button
               type="submit"

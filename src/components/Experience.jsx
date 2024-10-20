@@ -3,7 +3,7 @@ import { PiBriefcaseBold, PiPlusCircleBold } from 'react-icons/pi';
 import DatePicker from './DatePicker';
 
 const Experience = ({ info, setInfo }) => {
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   const [experience, setExperience] = useState({
     companyName: '',
     companyTitle: '',
@@ -102,7 +102,6 @@ const Experience = ({ info, setInfo }) => {
           </div>
 
           <DatePicker
-            date={experience}
             startDate={experience.companyStartDate}
             endDate={experience.companyEndDate}
             isPresent={experience.isPresent}
